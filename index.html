@@ -7,8 +7,6 @@
     </style>
   </head>
   <body id="viewer">
-    <script src="http://cdn.bootcss.com/three.js/r71/three.js"></script>
-    <script src="http://cool.techbrood.com/js/controls/OrbitControls.js"></script>
     <script src="js/loader/objloader.js"></script>
     <script>
       // scene 
@@ -21,12 +19,10 @@
       // mesh
       var geometry = new THREE.SphereGeometry(1);
       var material = new THREE.MeshPhongMaterial({
-          color: 0xe1e1e1 
+          color: 0xff0000 
       });
-      var cube = new THREE.Mesh(geometry, material);
-      scene.add(cube);
-      cube.rotation.x += 0.8;
-      cube.rotation.y += 0.8;
+      var origin = new THREE.Mesh(geometry, material);
+      scene.add(origin);
 
       // camera
       var camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
@@ -43,7 +39,7 @@
       // controls
       var controls = new THREE.OrbitControls( camera );
 
-      // renderer
+      // render the frame
       var render = function () {
         requestAnimationFrame( render );
         controls.update();
@@ -88,7 +84,6 @@
       }
       var objUrl = "model/door/door.obj";
       var pngUrl="model/door/door-texture.png";
-
       loadObj(objUrl, pngUrl);
 
       // resize

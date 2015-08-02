@@ -7,7 +7,9 @@
     </style>
   </head>
   <body id="viewer">
-    <script src="js/loader/objloader.js"></script>
+    <script src="http://threejs.org/build/three.min.js"></script>
+    <script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script src="http://threejs.org/examples/js/loaders/OBJLoader.js"></script>
     <script>
       // scene 
       var scene = new THREE.Scene();
@@ -61,7 +63,7 @@
         var intersects = raycaster.intersectObjects( scene.children, true);
         if(intersects.length > 0){
           var selectedMesh = intersects[ 0 ].object;
-          alert("selected mesh: " + selectedMesh.id);
+          selectedMesh.material.wireframe = !selectedMesh.material.wireframe
         }
       }
       document.getElementById("viewer").addEventListener("click", hitTest);
